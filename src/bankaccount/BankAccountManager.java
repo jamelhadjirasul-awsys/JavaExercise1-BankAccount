@@ -25,13 +25,14 @@ public class BankAccountManager implements Bank {
     this.id = 0;
   }
 
-  @Override
+    @Override
   public void addAccount(BankAccount account) {
     if (accounts.size() >= MAX_ACCOUNTS) {
       System.out.println("Account limit reached. Cannot add more accounts.");
       return;
     }
     accounts.put(id, account);
+    System.out.println("Account added successfully with ID: " + id);
     id++;
   }
 
@@ -43,15 +44,16 @@ public class BankAccountManager implements Bank {
   /**
    * Displays every account's id, owner name and balance.
    */
-  public void listAccounts() {
+    public void listAccounts() {
     for (Map.Entry<Integer, BankAccount> entry : accounts.entrySet()) {
       BankAccount account = entry.getValue();
       String owner = "Unknown";
       if (account instanceof SavingsAccount) {
         owner = ((SavingsAccount) account).getOwnerName();
       }
-      System.out.printf("ID: %d | Owner: %s | Balance: %.2f%n",
-          entry.getKey(), owner, account.getBalance());
+      double shown = Math.round(account.getBalance() * 100.0) / 100.0;
+      System.out.println("Account ID: " + entry.getKey()
+          + ", Account Name: " + owner + ", Balance: " + shown);
     }
   }
 }
