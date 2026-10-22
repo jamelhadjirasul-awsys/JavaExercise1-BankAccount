@@ -1,20 +1,30 @@
 package bankaccount;
-public class BankAccount {
-    double balance;
-    boolean isFrozen;
 
+/**
+ * A basic bank account that supports deposits, withdrawals and freezing.
+*/
+public class BankAccount {
+   double balance;
+   boolean isFrozen;
+
+    /**
+     * Creates an account with a zero balance that is not frozen.
+     */
     public BankAccount() {
         this.balance = 0.0;
         this.isFrozen = false;
     }
 
     public void deposit(double amount) {
+        if (isFrozen) {
+            System.out.println("Account is FROZEN.");
+            System.out.println("Unable to transact.\n");
+            return;
+        }
+
         System.out.printf("Amount deposited: %.2f%n", amount);
 
-        if (isFrozen) {
-            System.out.println("\nAccount is FROZEN.");
-            System.out.println("Unable to transact.");
-        } else if (amount <= 0) {
+        if (amount <= 0) {
             System.out.println("Invalid amount. Must be greater than 0.");
         } else {
             balance += amount;
@@ -26,15 +36,19 @@ public class BankAccount {
     public void withdraw(double amount) {
         if (isFrozen) {
             System.out.println("Account is FROZEN.");
-            System.out.println("Unable to transact.");
-        } else if (amount <= 0) {
-            System.out.printf("Invalid amount. Must be greater than 0.");
+            System.out.println("Unable to transact.\n");
+            return;
+        }
+
+        System.out.printf("Amount withdrawn: %.2f%n", amount);
+
+        if (amount <= 0) {
+            System.out.println("Invalid amount. Must be greater than 0.");
         } else if (amount > balance) {
-            System.out.printf("Insufficient balance. ");
-            System.out.printf("\nCurrent balance: %.2f%n", balance);
+            System.out.println("Insufficient balance.");
+            System.out.printf("Current balance: %.2f%n", balance);
         } else {
             balance -= amount;
-            System.out.printf("Amount withdrawn: %.2f%n", amount);
             System.out.printf("Current balance: %.2f%n", balance);
         }
         System.out.println();
@@ -45,7 +59,7 @@ public class BankAccount {
     }
 
     public void freezeAccount() {
-        isFrozen = true; 
+        isFrozen = true;
     }
 
     public void unfreezeAccount() {
@@ -58,37 +72,38 @@ public class BankAccount {
 
     public static void main(String[] args) {
         
-        //Test 1
         BankAccount acc1 = new SavingsAccount("Test0");
         SavingsAccount acc = (SavingsAccount) acc1;
+
+        // Test 1
         System.out.println("\nAcount Owner: " + acc.getOwnerName() + "\n");
 
-        //Test 2
+        // Test 2
         acc.deposit(1000.125);
 
-        //Test 3
+        // Test 3
         acc.deposit(0);
 
-        //Test 4
+        // Test 4
         acc.deposit(-500);
 
-        //Test 5
+        // Test 5
         acc.withdraw(500);
 
-        //Test 6
+        // Test 6
         acc.withdraw(1500);
 
-        //Test 7
+        // Test 7
         acc.withdraw(-100);
 
-        //Test 8 
+        // Test 8
         acc.freezeAccount();
         acc.deposit(11500);
 
-        //Test 9
+        // Test 9
         acc.withdraw(500);
 
-        //Test 10
+        // Test 10
         acc.unfreezeAccount();
         acc.withdraw(100);
     }
