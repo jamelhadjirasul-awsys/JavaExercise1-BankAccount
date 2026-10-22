@@ -1,3 +1,4 @@
+package bankaccount;
 public class SavingsAccount extends BankAccount {
     
     public String ownerName;
