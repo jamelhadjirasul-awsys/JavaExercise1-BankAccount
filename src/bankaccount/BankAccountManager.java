@@ -8,13 +8,8 @@ import java.util.Map;
  */
 public class BankAccountManager implements Bank {
 
-  /** The maximum number of accounts that can be created. */
   private static final int MAX_ACCOUNTS = 100;
-
-  /** Maps each account id to its account. */
   private Map<Integer, BankAccount> accounts;
-
-  /** The id given to the next account. */
   private int id;
 
   /**
@@ -25,7 +20,6 @@ public class BankAccountManager implements Bank {
     this.id = 0;
   }
 
-    @Override
   public void addAccount(BankAccount account) {
     if (accounts.size() >= MAX_ACCOUNTS) {
       System.out.println("Account limit reached. Cannot add more accounts.");
@@ -44,7 +38,7 @@ public class BankAccountManager implements Bank {
   /**
    * Displays every account's id, owner name and balance.
    */
-    public void listAccounts() {
+  public void listAccounts() {
     for (Map.Entry<Integer, BankAccount> entry : accounts.entrySet()) {
       BankAccount account = entry.getValue();
       String owner = "Unknown";

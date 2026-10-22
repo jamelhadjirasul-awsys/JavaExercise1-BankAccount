@@ -1,7 +1,7 @@
 package bankaccount;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A basic bank account that supports deposits, withdrawals and freezing.
@@ -69,26 +69,18 @@ public class BankAccount {
     System.out.println();
   }
 
-  /**
-   * Returns the current account balance.
-   */
   public double getBalance() {
     return balance;
   }
 
-  /** Freezes this account, preventing deposits and withdrawals. */
   public void freezeAccount() {
     isFrozen = true;
   }
 
-  /** Unfreezes this account, allowing deposits and withdrawals. */
   public void unfreezeAccount() {
     isFrozen = false;
   }
 
-  /**
-   * Indicates whether this account is frozen.
-   */
   public boolean isFrozen() {
     return isFrozen;
   }
@@ -105,7 +97,7 @@ public class BankAccount {
     BankAccount acc1 = new SavingsAccount("Test0");
     SavingsAccount acc = (SavingsAccount) acc1;
 
-    //EXERCISE 1
+    // EXERCISE 1
     // Test 1
     System.out.println("\nAcount Owner: " + acc.getOwnerName() + "\n");
 
@@ -138,7 +130,7 @@ public class BankAccount {
     acc.unfreezeAccount();
     acc.withdraw(100);
 
-    //EXERCISE 2
+    // EXERCISE 2
     // Test 11
     System.out.println("Transaction history:");
     System.out.println(acc.getTransactionHistory());
