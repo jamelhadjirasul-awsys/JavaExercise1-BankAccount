@@ -7,15 +7,14 @@ import java.util.List;
  * A basic bank account that supports deposits, withdrawals and freezing.
  */
 public class BankAccount {
-  /** The current account balance. */
-  double balance;
 
-  /** Whether transactions are currently blocked on this account. */
-  boolean isFrozen;
-
+  private double balance;
+  private boolean isFrozen;
   private List<Transaction> transactionHistory;
 
-  /** Constructs a new, unfrozen account with a zero balance. */
+  /** 
+   * Constructs a new, unfrozen account with a zero balance. 
+   */
   public BankAccount() {
     this.balance = 0.0;
     this.isFrozen = false;
@@ -39,7 +38,7 @@ public class BankAccount {
     } else {
       balance += amount;
       transactionHistory.add(new Transaction("Deposit", amount));
-      System.out.printf("Current balance: %.2f%n", balance);
+      printBalance();
     }
     System.out.println();
   }
@@ -60,11 +59,11 @@ public class BankAccount {
       System.out.println("Invalid amount. Must be greater than 0.");
     } else if (amount > balance) {
       System.out.println("Insufficient balance.");
-      System.out.printf("Current balance: %.2f%n", balance);
+      printBalance();
     } else {
       balance -= amount;
       transactionHistory.add(new Transaction("Withdraw", amount));
-      System.out.printf("Current balance: %.2f%n", balance);
+      printBalance();
     }
     System.out.println();
   }
@@ -80,9 +79,9 @@ public class BankAccount {
   public void unfreezeAccount() {
     isFrozen = false;
   }
-
-  public boolean isFrozen() {
-    return isFrozen;
+  
+  private void printBalance() {
+    System.out.printf("Current balance: %.2f%n", balance);
   }
 
   public List<Transaction> getTransactionHistory() {
@@ -90,7 +89,7 @@ public class BankAccount {
   }
 
   /**
-   * Runs the bank account examples.
+   * Runs the bank account test cases.
    */
   public static void main(String[] args) {
 

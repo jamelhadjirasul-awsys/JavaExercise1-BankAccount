@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores and manages bank accounts by id.
+ * * Stores and manages bank accounts by id.
  */
 public class BankAccountManager implements Bank {
 
@@ -20,13 +20,16 @@ public class BankAccountManager implements Bank {
     this.id = 0;
   }
 
+  /**
+   * Adds an account to the manager if the account limit has not been reached.
+   */
   public void addAccount(BankAccount account) {
     if (accounts.size() >= MAX_ACCOUNTS) {
       System.out.println("Account limit reached. Cannot add more accounts.");
       return;
     }
     accounts.put(id, account);
-    System.out.println("Account added successfully with ID: " + id);
+    System.out.println("\nAccount added successfully with ID: " + id);
     id++;
   }
 
@@ -46,7 +49,7 @@ public class BankAccountManager implements Bank {
         owner = ((SavingsAccount) account).getOwnerName();
       }
       double shown = Math.round(account.getBalance() * 100.0) / 100.0;
-      System.out.println("Account ID: " + entry.getKey()
+      System.out.println("\nAccount ID: " + entry.getKey()
           + ", Account Name: " + owner + ", Balance: " + shown);
     }
   }
