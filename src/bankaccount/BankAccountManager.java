@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * * Stores and manages bank accounts by id.
+ * Stores and manages bank accounts by id.
  */
 public class BankAccountManager implements Bank {
 
@@ -25,7 +25,7 @@ public class BankAccountManager implements Bank {
    */
   public void addAccount(BankAccount account) {
     if (accounts.size() >= MAX_ACCOUNTS) {
-      System.out.println("Account limit reached. Cannot add more accounts.");
+      System.out.println("\nAccount limit reached. Cannot add more accounts.");
       return;
     }
     accounts.put(id, account);
