@@ -20,6 +20,11 @@ public class BankAccountManager implements Bank {
     this.id = 0;
   }
 
+  /**
+   * Adds an account to the manager if the account limit has not been reached.
+   *
+   * @param account the account to add
+   */
   public void addAccount(BankAccount account) {
     if (accounts.size() >= MAX_ACCOUNTS) {
       System.out.println("Account limit reached. Cannot add more accounts.");
