@@ -29,4 +29,8 @@ public class Transaction {
         + ", time_stamp=" + timeStamp.format(format) + "]";
   }
 
+  public double getAmount() {
+    return amount;
+  }
+
 }

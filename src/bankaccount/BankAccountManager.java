@@ -1,7 +1,10 @@
 package bankaccount;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Stores and manages bank accounts by id.
@@ -53,4 +56,24 @@ public class BankAccountManager implements Bank {
           + ", Account Name: " + owner + ", Balance: " + shown);
     }
   }
+
+  /**
+   * Filters transactions whose amount is at or above the given amount.
+   */
+  public List<Transaction> filterTransactionsAtOrAbove(
+      double amount, List<Transaction> txList) {
+    return txList.stream()
+        .filter(tx -> tx.getAmount() >= amount)
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Sorts transactions by amount in ascending order.
+   */
+  public List<Transaction> sortTransactionsByAmount(List<Transaction> txList) {
+    List<Transaction> sorted = new ArrayList<>(txList);
+    sorted.sort((a, b) -> Double.compare(a.getAmount(), b.getAmount()));
+    return sorted;
+  }
+
 }
