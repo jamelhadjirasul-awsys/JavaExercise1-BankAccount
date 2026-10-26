@@ -25,7 +25,7 @@ public class Transaction {
    */
   public String toString() {
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    return "Transaction [type=" + type + ", amount=" + amount
+    return "\nTransaction [type=" + type + ", amount=" + amount
         + ", time_stamp=" + timeStamp.format(format) + "]";
   }
 
