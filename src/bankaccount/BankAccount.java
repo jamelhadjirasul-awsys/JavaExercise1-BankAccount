@@ -129,33 +129,84 @@ public class BankAccount {
     System.out.println("\nAccount Owner: " + acc.getOwnerName());
 
     // Test 2
-    tryDeposit(acc, 1000.125);
+    try {
+      acc.deposit(1000.125);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 3
-    tryDeposit(acc, 0);
+    try {
+      acc.deposit(0);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 4
-    tryDeposit(acc, -500);
+    try {
+      acc.deposit(-500);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 5
-    tryWithdraw(acc, 500);
+    try {
+      acc.withdraw(500);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 6
-    tryWithdraw(acc, 1500);
+    try {
+      acc.withdraw(1500);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 7
-    tryWithdraw(acc, -100);
+    try {
+      acc.withdraw(-100);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 8
     acc.freezeAccount();
-    tryDeposit(acc, 11500);
+    try {
+      acc.deposit(11500);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 9
-    tryWithdraw(acc, 500);
+    try {
+      acc.withdraw(500);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 10
     acc.unfreezeAccount();
-    tryWithdraw(acc, 100);
+    try {
+      acc.withdraw(100);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // EXERCISE 2
     // Test 11
@@ -174,25 +225,53 @@ public class BankAccount {
     // Test 15
     accM1.listAccounts();
 
-
     // EXERCISE 3
     // Test 16
-    tryDeposit(acc, -500);
+    try {
+      acc.deposit(-500);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 17
     acc.freezeAccount();
-    tryDeposit(acc, 11500);
+    try {
+      acc.deposit(11500);
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
     acc.unfreezeAccount();
 
     // Test 18
-    tryWithdraw(acc, -100);
+    try {
+      acc.withdraw(-100);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 19
-    tryWithdraw(acc, 1500);
+    try {
+      acc.withdraw(1500);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
 
     // Test 20
     acc.freezeAccount();
-    tryWithdraw(acc, 500);
+    try {
+      acc.withdraw(500);
+    } catch (InsufficientFundsException e) {
+      System.out.println(e.getMessage());
+      System.out.println();
+    } catch (InvalidAmountException | AccountFrozenException e) {
+      System.out.println(e.getMessage() + "\n");
+    }
     acc.unfreezeAccount();
 
     // Test 21
@@ -204,6 +283,5 @@ public class BankAccount {
     System.out.println("\nSorting transactions by amount...");
     System.out.println(
         accM1.sortTransactionsByAmount(acc.getTransactionHistory()));
-
   }
 }
