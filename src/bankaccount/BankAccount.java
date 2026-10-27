@@ -91,32 +91,6 @@ public class BankAccount {
   }
 
   /**
-   * Deposits into an account and prints any error instead of crashing.
-   */
-  private static void tryDeposit(BankAccount acc, double amount) {
-    try {
-      acc.deposit(amount);
-    } catch (InvalidAmountException | AccountFrozenException e) {
-      System.out.println(e.getMessage() + "\n");
-    }
-  }
-
-  /**
-   * Withdraws from an account and prints any error instead of crashing.
-   */
-  private static void tryWithdraw(BankAccount acc, double amount) {
-    try {
-      acc.withdraw(amount);
-    } catch (InsufficientFundsException e) {
-      System.out.println(e.getMessage());
-      acc.printBalance();
-      System.out.println();
-    } catch (InvalidAmountException | AccountFrozenException e) {
-      System.out.println(e.getMessage() + "\n");
-    }
-  }
-
-  /**
    * Runs the bank account test cases.
    */
   public static void main(String[] args) {

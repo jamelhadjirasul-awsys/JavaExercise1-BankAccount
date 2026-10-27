@@ -5,7 +5,7 @@ package bankaccount;
  */
 public class SavingsAccount extends BankAccount {
 
-  public String ownerName;
+  private String ownerName;
 
   public SavingsAccount(String ownerName) {
     this.ownerName = ownerName;
